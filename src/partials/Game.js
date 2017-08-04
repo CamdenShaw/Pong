@@ -18,6 +18,19 @@ constructor(element) {
 		this.ball = new Ball(8);
 		this.score1 = new Score((gameWidth/2) - 80, 30, 30);
 		this.score2 = new Score((gameWidth/2) + 40, 30, 30);
+		this.balls = [];
+		this.i = -1;
+
+    document.addEventListener('keydown', event => {
+      switch (event.key) {
+				case KEYS.x: 
+						this.balls.push(new Ball(8));
+						this.i++;
+						console.log(this.balls[this.i]);
+						console.log('success', this.balls, this.i);
+        break;
+      }
+    });
 		document.addEventListener('keydown', event => {
 			switch (event.key) {
 				case KEYS.spaceBar:
@@ -49,6 +62,13 @@ constructor(element) {
 		this.paddle1.render(svg);
 		this.paddle2.render(svg);
 		this.ball.render(svg, this.paddle1, this.paddle2);
+		if (this.i < 0 ) {
+			return;
+		} else {
+			for ( this.a = 0; this.a <= this.i; this.a++ ){
+				this.balls[this.a].render(svg, this.paddle1, this.paddle2);
+			}
+		}
 
 		// console.log(this.paddle1);
 		// console.log(this.paddle2);

@@ -5,7 +5,9 @@ export const KEYS = {
   z: 'z',
   up: 'ArrowUp',
   down: 'ArrowDown',
-  spaceBar: ' '
+  spaceBar: ' ',
+  x: 'x',
+  right: 'ArrowRight'
 }
 
 export const paddleHeight = 56;
