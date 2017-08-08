@@ -11,7 +11,7 @@ export default class Board {
     let rect = document.createElementNS(SVG_NS, 'rect');
     rect.setAttributeNS(null, 'width', this.width);
     rect.setAttributeNS(null, 'height', this.height);
-    rect.setAttributeNS(null, 'fill', 'black');
+    rect.setAttributeNS(null, 'fill', '#BECAFF');
     svg.appendChild(rect);
 
     let line = document.createElementNS(SVG_NS, 'line');

@@ -1,4 +1,5 @@
 import { SVG_NS, gameHeight } from '../settings';
+
 export default class Paddle {
 
   constructor (width, height, x, y, up, down) {

@@ -1,9 +1,11 @@
 import { SVG_NS, gameHeight, gameWidth } from '../settings.js';
+import { Game, i } from './Game.js'
 
 export default class Ball {
   constructor(radius) {
     this.radius = radius;
     this.direction = 0;
+    this.color = 'white';
     this.pingW = new Audio('public/sounds/pong-01.wav');
     this.pingP = new Audio('public/sounds/pong-03.wav');
     this.pingS = new Audio('public/sounds/pong-02.wav');
@@ -52,18 +54,24 @@ export default class Ball {
   goal (player) {
     player.score++;
     this.pingS.play();
-    this.reset();
   }
 
   render(svg, paddle1, paddle2) {
 
-    if (this.x >= gameWidth) {
+    if (this.x-(this.radius) >= gameWidth) {
       this.direction = 1;
       this.goal(paddle1);
-    } else if (this.x <= 0) {
+    } else if (this.x+(this.radius) <= 0) {
       this.direction = -1;
       this.goal(paddle2);
     }
+
+    if (this.x-(this.radius) >= gameWidth) {
+    this.reset();
+    } else if (this.x+(this.radius) <= 0) {
+    this.reset();
+    }
+    
 
     this.x += this.vx;
     this.y += this.vy;
@@ -71,7 +79,7 @@ export default class Ball {
     ball.setAttributeNS(null, 'r', this.radius);
     ball.setAttributeNS(null, 'cx', this.x);
     ball.setAttributeNS(null, 'cy', this.y);
-    ball.setAttributeNS(null, 'fill', 'white');
+    ball.setAttributeNS(null, 'fill', this.color);
     svg.appendChild(ball);
     this.wallBounce();
     this.paddleBounce(paddle1, paddle2);
