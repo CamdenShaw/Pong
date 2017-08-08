@@ -141,12 +141,8 @@ export default class Game {
 		this.ballArray();
 
 		for ( this.a = 0; this.a <= this.i; this.a++ ){
-			if ( this.balls[this.a] != null) {
-				this.balls[this.a].color = this.colorArray[this.a];
-				this.balls[this.a].render(svg, this.paddle1, this.paddle2);
-			} else {
-				let j = 1;
-			}
+			this.balls[this.a].color = this.colorArray[this.a];
+			this.balls[this.a].render(svg, this.paddle1, this.paddle2);
 		}
 	}
 }
