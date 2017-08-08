@@ -10,7 +10,7 @@ export default class Ball {
     this.pingP = new Audio('public/sounds/pong-03.wav');
     this.pingS = new Audio('public/sounds/pong-02.wav');
     while (this.direction === 0) {
-      this.direction = Math.floor(Math.random()*2-0.49);
+      this.direction = Math.floor(Math.random()*2-0.48);
     }
     this.reset();
   }

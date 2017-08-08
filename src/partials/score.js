@@ -12,7 +12,7 @@ export default class Score {
     let scoreBoard = document.createElementNS(SVG_NS, 'text');
     scoreBoard.setAttributeNS(null, 'x', this.x);
     scoreBoard.setAttributeNS(null, 'y', this.y);
-    scoreBoard.setAttributeNS(null, 'font-family', 'impact');
+    scoreBoard.setAttributeNS(null, 'font-family', '../../public/fonts/slksrc-webfont.svg');
     scoreBoard.setAttributeNS(null, 'font-size', this.size);
     scoreBoard.setAttributeNS(null, 'fill', 'whitesmoke');
     scoreBoard.textContent = score;
