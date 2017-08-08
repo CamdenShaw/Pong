@@ -58,12 +58,12 @@ export default class Game {
 		if (this.i >= 0 ) {
 
 			for ( this.a = 0; this.a <= this.i; this.a++ ) {
-				if (this.balls[this.a].x <= this.balls[this.a].radius) {
+				if (this.balls[this.a].x <= 0) {
 					this.balls.splice(this.a, 1);
 					this.colorArray.splice(this.a, 1);
 					this.i--;
 					this.ball.goal(this.paddle2);
-				} else if ( this.balls[this.a].x >= gameWidth - this.balls[this.a].radius) {
+				} else if ( this.balls[this.a].x >= gameWidth) {
 					this.balls.splice(this.a, 1);
 					this.colorArray.splice(this.a, 1);
 					this.ball.goal(this.paddle1);

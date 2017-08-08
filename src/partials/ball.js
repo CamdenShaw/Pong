@@ -29,8 +29,8 @@ export default class Ball {
       let paddle = paddle2.coordinates(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
       let [leftX, rightX, topY, bottomY] = paddle;
       let ballPosX = this.x + this.radius;
-      let ballPosBottom = this.y + this.radius;
-      let ballPosTop = this.y - this.radius;
+      let ballPosBottom = this.y - (this.radius/2);
+      let ballPosTop = this.y - (this.radius/2);
 
       if (ballPosX >= leftX && ballPosX <= (rightX + this.vx + this.radius) && ballPosTop <= bottomY && ballPosBottom >= topY) {
         this.vx = -this.vx;
@@ -41,8 +41,8 @@ export default class Ball {
       let paddle = paddle1.coordinates(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
       let [leftX, rightX, topY, bottomY] = paddle;
       let ballPosX = this.x - this.radius;
-      let ballPosBottom = this.y + this.radius;
-      let ballPosTop = this.y - this.radius;
+      let ballPosBottom = this.y - (this.radius/2);
+      let ballPosTop = this.y - (this.radius/2);
 
       if (ballPosX <= rightX && ballPosX >= (leftX - this.vx - this.radius) &&  ballPosTop <= bottomY && ballPosBottom >= topY) {
         this.vx = -this.vx;
