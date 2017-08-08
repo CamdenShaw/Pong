@@ -26,6 +26,8 @@ export default class Game {
 		this.p2Color = 'crimson';
 		this.colorArray = [];
 
+		this.win = new Audio('public/sounds/pong-04.wav');
+
     document.addEventListener('keydown', event => {
       switch (event.key) {
 				case KEYS.x: 
@@ -97,6 +99,7 @@ export default class Game {
 		newGame.setAttributeNS(null, 'fill', 'black');
 		newGame.textContent = '(press spacebar to start a new game)';
 		svg.appendChild(newGame);
+		this.win.play();
 		this.paddle1.score = 0;
 		this.paddle2.score = 0;
 		this.colorArray = [];
