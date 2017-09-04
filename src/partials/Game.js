@@ -76,6 +76,7 @@ export default class Game {
 
 	winner(player, color) {
 		this.gameElement.innerHTML = '';
+		
 		let svg = document.createElementNS(SVG_NS, 'svg');
 		svg.setAttributeNS(null, 'version', '1.1');
 		svg.setAttributeNS(null, 'width', gameWidth);

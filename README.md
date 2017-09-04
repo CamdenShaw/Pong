@@ -1,5 +1,7 @@
 # Pong Game
 
+![alt text](screen-shots/normal-pong.png "Play some Pong!")
+
 A basic pong game using SVGs.
 
 ## Setup
@@ -30,9 +32,11 @@ A basic pong game using SVGs.
 
 This is a pong game built by Camden Shaw for Red Academy's Web Development course.
 
-technologies used are:
+# Technologies Used Are
 
-`npm   javascript    es2016 and beyond   eslint      json        yarn        webpack     VS Studio Code    babel     python`
+`npm   javascript    es2016 and beyond   eslint      json        yarn        webpack     VS Studio Code    babel     python  Macintosh`
+
+# Learnings
 
 I learned a lot about javascript classes and node use in this project.  It was difficult to wrap my head around at first, but I believe I have the hang of it now.  Not being able to alter a variable in a node other than the one it was created in was a bit of a setback, I found (getting the 'x is read-only' error), but I was able to figure out how to work around it.
 
@@ -41,3 +45,5 @@ The stretch-goals I strode for were to press a button to release balls (x for pl
 I also modified the parameters of the paddles so that the balls can pass behind them without acting as though the balls hit the paddles.  I added the ability to press the spacebar in order to start a new game after a winner has been declared.  For the balls added on keypress, I randomized the size and color for a bit of an extra "wow" - it feels very 90's.
 
 If I hadn't come down with a mild case of food-poisoning on Saturday I would have liked to try to add a 'spin' element to the ball and ad a lazer blast to player 2's paddle in place of initiating extra balls (with the ability to destroy the coloured balls) to give players 1 and 2 their own specialties.  Overall I am happy with what I accomplished, however.
+
+![alt text](screen-shots/extra-balls.png "Colourful surprise!")

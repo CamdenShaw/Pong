@@ -1,5 +1,5 @@
 # Editor
-DS_Store
+.DS_Store
 .vscode
 
 # NPM
