@@ -15,12 +15,10 @@ export default class Ball {
   }
 
   wallBounce() {
-
     if (this.y <= this.radius || this.y >= (gameHeight-this.radius)) {
       this.vy = -this.vy;
       this.pingW.play();
     }
-    
   }
 
   paddleBounce(paddle1, paddle2) {
@@ -35,8 +33,8 @@ export default class Ball {
         this.vx = -this.vx;
         this.pingP.play();
       }
-    }else{
-      
+    }
+    else {
       let paddle = paddle1.coordinates(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
       let [leftX, rightX, topY, bottomY] = paddle;
       let ballPosX = this.x - this.radius;
@@ -56,7 +54,6 @@ export default class Ball {
   }
 
   render(svg, paddle1, paddle2) {
-
     if (this.x-(this.radius) >= gameWidth) {
       this.direction = 1;
       this.goal(paddle1);

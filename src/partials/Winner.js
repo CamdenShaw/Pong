@@ -7,12 +7,9 @@ export default class ScoreCard {
     this.height = height;
     this.gameElement = document.getElementById(element);
     this.win = new Audio('public/sounds/pong-04.wav');
-    
-    
   }
 
   render(player, color) {
-
 		this.win.play();
 
     let svg = document.createElementNS(SVG_NS, 'svg');
@@ -30,6 +27,7 @@ export default class ScoreCard {
     winner.setAttributeNS(null, 'fill', color);
     winner.textContent = player + '  Wins!!!';
     svg.appendChild(winner);
+
     let newGame = document.createElementNS(SVG_NS, 'text');
     newGame.setAttributeNS(null, 'x', 37);
     newGame.setAttributeNS(null, 'y', this.height/1.7);
@@ -38,7 +36,5 @@ export default class ScoreCard {
     newGame.setAttributeNS(null, 'fill', 'black');
     newGame.textContent = '(press spacebar to start a new game)';
     svg.appendChild(newGame);
-    this.colorArray = [];
-    this.balls = [];
   }
 }

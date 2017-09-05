@@ -41,8 +41,8 @@ export default class Game {
 		document.addEventListener('keydown', event => {
 			switch (event.key) {
 				case KEYS.spaceBar:
-					this.resume();
-					break;
+						this.resume();
+						break;
 			}
 		});
 	}
@@ -54,6 +54,7 @@ export default class Game {
 			this.pause = !this.pause;
 		}
 	}
+
 	colourfulBalls() {
 		this.balls.push(new Ball((Math.random() *10) + 3));
 		this.color = Math.floor(Math.random()* 1000000);
@@ -62,16 +63,15 @@ export default class Game {
 	}
 
 	ballArray() {
-
 		if (this.i >= 0 ) {
-
 			for ( this.a = 0; this.a <= this.i; this.a++ ) {
 				if (this.balls[this.a].x <= 0) {
 					this.balls.splice(this.a, 1);
 					this.colorArray.splice(this.a, 1);
 					this.i--;
 					this.ball.goal(this.paddle2);
-				} else if ( this.balls[this.a].x >= gameWidth) {
+				}
+				else if ( this.balls[this.a].x >= gameWidth) {
 					this.balls.splice(this.a, 1);
 					this.colorArray.splice(this.a, 1);
 					this.ball.goal(this.paddle1);
@@ -79,7 +79,6 @@ export default class Game {
 				}
 			}
 		}
-
 	}
 
 	winner() {
@@ -101,6 +100,7 @@ export default class Game {
 			this.winner();
 			return;
 		}
+
 		this.gameElement.innerHTML = '';  // clears the div so every render doesn't add the new svg to the end of the old one
 
 		let svg = document.createElementNS(SVG_NS, 'svg');
