@@ -3,6 +3,7 @@ import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball';
 import Score from './Score';
+import ScoreCard from './Winner';
 
 export default class Game {
 
@@ -10,7 +11,7 @@ export default class Game {
 	
 		this.gameElement = document.getElementById(element);
 		this.board = new Board(gameWidth, gameHeight);
-
+		this.end = false;
 		this.paddle1 = new Paddle(paddleWidth, paddleHeight, gapSize, (gameHeight-paddleHeight)/2, KEYS.a, KEYS.z);
 		this.paddle2 = new Paddle(paddleWidth, paddleHeight, gameWidth - paddleWidth - gapSize, (gameHeight-paddleHeight)/2, KEYS.up, KEYS.down);
 
@@ -18,6 +19,7 @@ export default class Game {
 		this.score1 = new Score((gameWidth/2) - 80, 30, 30);
 		this.score2 = new Score((gameWidth/2) + 40, 30, 30);
 		this.balls = [];
+		this.scoreCard = new ScoreCard( gameWidth, gameHeight, element );
 		this.i = -1;
 		this.a = 0;
 		this.color = 'white';
@@ -25,31 +27,38 @@ export default class Game {
 		this.p2Color = 'crimson';
 		this.colorArray = [];
 
-		this.win = new Audio('public/sounds/pong-04.wav');
-
     document.addEventListener('keydown', event => {
       switch (event.key) {
-				case KEYS.x: 
-						this.balls.push(new Ball((Math.random() *10) + 3));
-						this.color = Math.floor(Math.random()* 1000000);
-						this.colorArray.push(`#${this.color}`);
-						this.i = Math.min(this.i+1, 9);
-					break;
-				case KEYS.right:
-						this.balls.push(new Ball((Math.random() *10) + 3));
-						this.color = Math.floor(Math.random()* 1000000);
-						this.colorArray.push(`#${this.color}`);
-						this.i = Math.min(this.i+1, 9);
-        	break;
+				case KEYS.x: 'balls',
+						this.colourfulBalls();
+						break;
+				case KEYS.right: 'balls',
+						this.colourfulBalls();
+						break;
       }
-    });
+		});
+
 		document.addEventListener('keydown', event => {
 			switch (event.key) {
 				case KEYS.spaceBar:
-					this.pause = !this.pause;
+					this.resume();
 					break;
 			}
 		});
+	}
+
+	resume() {
+		this.pause = !this.pause;
+		if (this.end === true) {
+			this.end = false;
+			this.pause = !this.pause;
+		}
+	}
+	colourfulBalls() {
+		this.balls.push(new Ball((Math.random() *10) + 3));
+		this.color = Math.floor(Math.random()* 1000000);
+		this.colorArray.push(`#${this.color}`);
+		this.i = Math.min(this.i+1, 9);
 	}
 
 	ballArray() {
@@ -73,40 +82,14 @@ export default class Game {
 
 	}
 
-	winner(player, color) {
-		this.gameElement.innerHTML = '';
-		
-		let svg = document.createElementNS(SVG_NS, 'svg');
-		svg.setAttributeNS(null, 'version', '1.1');
-		svg.setAttributeNS(null, 'width', gameWidth);
-		svg.setAttributeNS(null, 'height', gameHeight);
-		svg.setAttributeNS(null, 'viewbox', `0, 0, ${gameWidth} ${gameHeight}`);
-		this.gameElement.appendChild(svg);
-
-		let winner = document.createElementNS(SVG_NS, 'text');
-		winner.setAttributeNS(null, 'x', 46);
-		winner.setAttributeNS(null, 'y', gameHeight/2);
-		winner.setAttributeNS(null, 'font-family', '../../public/fonts/slkscr-webfont.svg');
-		winner.setAttributeNS(null, 'font-size', 44);
-		winner.setAttributeNS(null, 'fill', color);
-		winner.textContent = player + '  Wins!!!';
-		svg.appendChild(winner);
-		let newGame = document.createElementNS(SVG_NS, 'text');
-		newGame.setAttributeNS(null, 'x', 37);
-		newGame.setAttributeNS(null, 'y', gameHeight/1.7);
-		newGame.setAttributeNS(null, 'font-family', '../../public/fonts/slkscr-webfont.svg');
-		newGame.setAttributeNS(null, 'font-size', 19);
-		newGame.setAttributeNS(null, 'fill', 'black');
-		newGame.textContent = '(press spacebar to start a new game)';
-		svg.appendChild(newGame);
-		this.win.play();
+	winner() {
 		this.paddle1.score = 0;
 		this.paddle2.score = 0;
 		this.colorArray = [];
 		this.i = -1;
 		this.a = 0;
 		this.ball.reset();
-		this.pause = !this.pause;
+		this.end = true;
 		this.balls = [];
 	}
 
@@ -114,8 +97,11 @@ export default class Game {
 		if (this.pause) {
 			return;
 		}
+		if (this.end) {
+			this.winner();
+			return;
+		}
 		this.gameElement.innerHTML = '';  // clears the div so every render doesn't add the new svg to the end of the old one
-
 
 		let svg = document.createElementNS(SVG_NS, 'svg');
 		svg.setAttributeNS(null, 'version', '1.1');
@@ -130,9 +116,13 @@ export default class Game {
 		this.score2.render(svg, this.paddle2.score);
 		
 		if (this.paddle1.score === 20) {
-			this.winner('Player 1', this.p1Color);
+			this.gameElement.innerHTML = '';
+			this.scoreCard.render('Player 1', this.p1Color);
+			this.winner();
 		} else if (this.paddle2.score === 20) {
-			this.winner('Player 2', this.p2Color);
+			this.gameElement.innerHTML = '';
+			this.scoreCard.render('Player 2', this.p2Color);
+			this.winner();
 		}
 
 		this.paddle1.render(svg);

@@ -1,5 +1,4 @@
 import { SVG_NS, gameHeight, gameWidth } from '../settings.js';
-import { Game, i } from './Game.js'
 
 export default class Ball {
   constructor(radius) {
