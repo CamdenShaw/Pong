@@ -9,7 +9,6 @@ export default class Game {
 	constructor(element) {
 	
 		this.gameElement = document.getElementById(element);
-
 		this.board = new Board(gameWidth, gameHeight);
 
 		this.paddle1 = new Paddle(paddleWidth, paddleHeight, gapSize, (gameHeight-paddleHeight)/2, KEYS.a, KEYS.z);

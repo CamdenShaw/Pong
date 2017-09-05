@@ -36,7 +36,7 @@ export default class Ball {
         this.vx = -this.vx;
         this.pingP.play();
       }
-    } else {
+    }else{
       
       let paddle = paddle1.coordinates(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
       let [leftX, rightX, topY, bottomY] = paddle;

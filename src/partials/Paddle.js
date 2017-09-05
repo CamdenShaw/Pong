@@ -34,9 +34,7 @@ export default class Paddle {
   }
 
   down() {
-
     this.y = Math.min((this.y + this.speed), (gameHeight - this.height));
-
   }
 
   render(svg) {
@@ -47,6 +45,5 @@ export default class Paddle {
     paddle.setAttributeNS(null, 'x', this.x);
     paddle.setAttributeNS(null, 'y', this.y);
     svg.appendChild(paddle);
-
   }
 }

@@ -24,5 +24,4 @@ export default class Board {
     line.setAttributeNS(null, 'y1', '0');
     svg.appendChild(line);
   }
-
 }
