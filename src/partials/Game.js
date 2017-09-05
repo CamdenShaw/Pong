@@ -1,8 +1,8 @@
 import { SVG_NS, KEYS, paddleHeight, paddleWidth, gapSize, gameWidth, gameHeight } from '../settings';
-import Board from './board';
-import Paddle from './paddle';
-import Ball from './ball';
-import Score from './score';
+import Board from './Board';
+import Paddle from './Paddle';
+import Ball from './Ball';
+import Score from './Score';
 
 export default class Game {
 
@@ -104,11 +104,11 @@ export default class Game {
 		this.paddle1.score = 0;
 		this.paddle2.score = 0;
 		this.colorArray = [];
-		this.balls = [];
 		this.i = -1;
 		this.a = 0;
 		this.ball.reset();
 		this.pause = !this.pause;
+		this.balls = [];
 	}
 
 	render() {

@@ -209,6 +209,7 @@ var Game = function () {
 		key: 'winner',
 		value: function winner(player, color) {
 			this.gameElement.innerHTML = '';
+
 			var svg = document.createElementNS(_settings.SVG_NS, 'svg');
 			svg.setAttributeNS(null, 'version', '1.1');
 			svg.setAttributeNS(null, 'width', _settings.gameWidth);

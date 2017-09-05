@@ -67,9 +67,9 @@ export default class Ball {
     }
 
     if (this.x-(this.radius) >= gameWidth) {
-    this.reset();
+      this.reset();
     } else if (this.x+(this.radius) <= 0) {
-    this.reset();
+      this.reset();
     }
     
 
