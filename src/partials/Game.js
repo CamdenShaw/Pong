@@ -26,6 +26,7 @@ export default class Game {
 		this.p1Color = 'red';
 		this.p2Color = 'crimson';
 		this.colorArray = [];
+		this.pause = true;
 
     document.addEventListener('keydown', event => {
       switch (event.key) {
