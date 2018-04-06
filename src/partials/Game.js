@@ -49,6 +49,7 @@ export default class Game {
 	}
 
 	resume() {
+		document.querySelector('p').innerHTML = '';
 		this.pause = !this.pause;
 		if (this.end === true) {
 			this.end = false;
